@@ -5,95 +5,114 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <!-- Primary Meta Tags -->
   <title>OmniRaster | Universal In-Browser Raster Graphics Converter</title>
   <meta name="title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
-  <meta name="description" content="Convert any raster graphics format (PNG, JPEG, WebP, QOI, TGA, PPM, NetPBM, BMP, RAW, and more) directly in your browser. 100% private, zero server uploads, powered by modular JavaScript.">
-  <meta name="keywords" content="raster converter, image converter, qoi converter, tga converter, ppm converter, in-browser image converter, client-side, webp, png, jpeg">
+  <meta name="description" content="Convert any raster graphics format (PNG, JPEG, WebP, QOI, TGA, NetPBM, BMP, RAW, and 50+ more) directly in your browser. 100% private, zero server uploads.">
   <meta name="author" content="Mosberg">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#090d16">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mosberg.github.io/raster-converter/">
   <meta property="og:title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
   <meta property="og:description" content="Zero-dependency client-side image converter. Convert modern, retro, and specialized raster images directly on your device.">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://mosberg.github.io/raster-converter/">
-  <meta name="twitter:title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
-  <meta name="twitter:description" content="Zero-dependency client-side image converter. 100% private, offline-capable, and modular.">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Preconnect Fonts -->
+  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="css/style.css">
+</head>
 <body>
-  <!-- Header / Navigation -->
+  <!-- Header Bar -->
   <header class="site-header" role="banner">
     <div class="nav-container">
-      <a href="#" class="brand" aria-label="OmniRaster Homepage">
+      <a href="#converter" class="brand" aria-label="OmniRaster Home">
         <span class="brand-icon" aria-hidden="true">⚡</span>
         <span class="brand-text">OmniRaster</span>
       </a>
 
-      <nav class="nav-links" aria-label="Main Navigation">
-        <a href="#converter">Converter</a>
-        <a href="#features">Features</a>
-        <a href="#formats">Supported Formats</a>
-        <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Repository">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+      <!-- Tab Navigation (Desktop & Mobile) -->
+      <nav class="tab-nav" role="tablist" aria-label="Application Sections">
+        <button type="button" role="tab" class="tab-btn active" id="tab-converter" aria-selected="true" aria-controls="panel-converter">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="16 3 21 3 21 8"></polyline>
+            <line x1="4" y1="20" x2="21" y2="3"></line>
+            <polyline points="21 16 21 21 16 21"></polyline>
+            <line x1="15" y1="15" x2="21" y2="21"></line>
+            <line x1="4" y1="4" x2="9" y2="9"></line>
           </svg>
-          <span>GitHub</span>
-        </a>
+          <span>Converter</span>
+        </button>
+
+        <button type="button" role="tab" class="tab-btn" id="tab-features" aria-selected="false" aria-controls="panel-features">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>Features</span>
+        </button>
+
+        <button type="button" role="tab" class="tab-btn" id="tab-formats" aria-selected="false" aria-controls="panel-formats">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>Supported Formats</span>
+          <span class="tab-badge" id="format-count-badge">50+</span>
+        </button>
       </nav>
+
+      <!-- GitHub Link -->
+      <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="View on GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+        <span class="github-text">GitHub</span>
+      </a>
     </div>
   </header>
 
-  <main id="main-content">
-    <!-- Hero / Main Converter Area -->
-    <section id="converter" class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <div class="pill-badge" role="status">🔒 100% Client-Side & Private • Zero Cloud Uploads</div>
-        <h1 id="hero-title">Universal Raster Graphics Converter</h1>
-        <p class="hero-subtitle">
-          Transform any bitmap or raster image into any other format directly inside your browser. Fast, local execution powered by ES modules, Canvas, and WebAssembly.
-        </p>
+  <!-- Main Multi-Panel Workspace -->
+  <main class="main-layout" id="main-content">
+    
+    <!-- ==================== TAB 1: CONVERTER ==================== -->
+    <section id="panel-converter" class="tab-panel active" role="tabpanel" aria-labelledby="tab-converter">
+      <div class="panel-header text-center">
+        <div class="pill-badge" role="status">🔒 100% Client-Side • Local In-Memory Processing</div>
+        <h1>Convert Any Raster Format</h1>
+        <p class="subtitle">Drag, drop, and convert across modern, retro, and proprietary bitmap formats instantly in your browser.</p>
+      </div>
 
-        <!-- Converter App Card -->
-        <div class="converter-card" role="region" aria-label="Image Converter Tool">
-          <!-- Drop Zone -->
-          <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Drop image here or press Enter to browse files">
-            <input type="file" id="file-input" class="visually-hidden" accept="image/*, .tga, .qoi, .ppm, .pgm, .pbm, .pnm, .pcx, .bmp, .webp, .avif" aria-label="Choose image to convert">
-            <div class="drop-zone-icon" aria-hidden="true">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="17 8 12 3 7 8"/>
-                <line x1="12" y1="3" x2="12" y2="15"/>
-              </svg>
-            </div>
-            <p class="drop-zone-title">Drag &amp; drop your raster image here</p>
-            <p class="drop-zone-subtitle">or <span class="highlight-action">browse from your computer</span></p>
-            <p class="drop-zone-formats">Supports WebP, PNG, JPEG, QOI, TGA, NetPBM, BMP, AVIF &amp; 50+ raster formats</p>
+      <div class="converter-workspace">
+        <!-- Interactive Drop Zone -->
+        <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Upload an image by dragging or clicking">
+          <input type="file" id="file-input" class="visually-hidden" accept="image/*, .tga, .qoi, .ppm, .pgm, .pbm, .pnm, .pcx, .bmp, .webp, .avif, .dds" aria-label="File upload">
+          <div class="drop-zone-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
           </div>
+          <p class="drop-zone-title">Drop your raster image here</p>
+          <p class="drop-zone-subtitle">or <span class="highlight-action">browse files</span></p>
+          <span class="drop-zone-hint">Accepts PNG, WebP, JPG, QOI, TGA, NetPBM, BMP, AVIF &amp; more</span>
+        </div>
 
-          <!-- Controls Bar -->
-          <div class="converter-controls">
-            <div class="control-group">
-              <label for="target-format" class="control-label">Convert To:</label>
+        <!-- Action Control Dashboard -->
+        <div class="converter-dashboard">
+          <div class="control-row">
+            <div class="field-item">
+              <label for="target-format" class="field-label">Target Format</label>
               <div class="select-wrapper">
                 <select id="target-format" aria-label="Select target format"></select>
               </div>
             </div>
 
-            <div class="button-group">
+            <div class="actions-wrapper">
               <button type="button" id="convert-btn" class="btn btn-primary" disabled>
                 <span class="btn-icon" aria-hidden="true">⚡</span>
                 <span>Convert Image</span>
@@ -105,85 +124,136 @@
             </div>
           </div>
 
-          <!-- Status Indicator -->
+          <!-- Status Bar -->
           <div id="status-text" class="status-banner" role="status" aria-live="polite">
             <span class="status-dot"></span>
-            <span class="status-message">Awaiting image selection...</span>
+            <span class="status-message">Awaiting image file...</span>
           </div>
+        </div>
 
-          <!-- Preview Area -->
-          <div class="preview-area" id="preview-container" aria-label="Image Preview">
-            <div class="preview-header">
-              <span class="preview-label">Live Canvas Preview</span>
-              <span id="image-dimensions" class="preview-meta"></span>
+        <!-- Live Visual Preview Card -->
+        <div class="preview-card" id="preview-container">
+          <div class="preview-header">
+            <div class="preview-title-group">
+              <span class="preview-badge">LIVE PREVIEW</span>
+              <span class="preview-subtext">Direct pixel rendering buffer</span>
             </div>
-            <div class="canvas-viewport">
-              <canvas id="preview-canvas" aria-label="Rendered preview of loaded image"></canvas>
+            <div class="preview-meta" id="preview-meta">
+              <span id="image-dimensions" class="meta-tag">0 × 0 px</span>
+              <span id="image-format-badge" class="meta-tag format-tag">NONE</span>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Key Features Section -->
-    <section id="features" class="features-section" aria-labelledby="features-title">
-      <div class="section-container">
-        <h2 id="features-title" class="section-title">Built for Speed, Privacy &amp; Compatibility</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🔒</div>
-            <h3>100% Client-Side Privacy</h3>
-            <p>Your photos and files never leave your device. All pixel decoding, byte processing, and encoding occurs locally in RAM.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🧩</div>
-            <h3>Modular ES Architecture</h3>
-            <p>Decoupled format engines communicating via a unified 32-bit linear RGBA <code>ImageBuffer</code> standard.</p>
-          </div>
-
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">🕹️</div>
-            <h3>Modern &amp; Retro Codecs</h3>
-            <p>From modern next-gen formats like QOI and WebP to retro computing classics including TGA, NetPBM, and PCX.</p>
+          <div class="canvas-stage">
+            <canvas id="preview-canvas" aria-label="Image preview area"></canvas>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Searchable Format Directory -->
-    <section id="formats" class="catalog-section" aria-labelledby="catalog-title">
-      <div class="section-container">
-        <div class="catalog-header">
-          <div>
-            <h2 id="catalog-title" class="section-title">Comprehensive Raster Directory</h2>
-            <p class="section-subtitle">Search over 50+ supported and registered raster format specifications.</p>
-          </div>
-          <div class="search-box">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="search" id="search-formats" placeholder="Filter by name, ID, or extension (e.g. QOI, TGA, RAW)..." aria-label="Filter formats">
-          </div>
-        </div>
+    <!-- ==================== TAB 2: FEATURES ==================== -->
+    <section id="panel-features" class="tab-panel" role="tabpanel" aria-labelledby="tab-features" hidden>
+      <div class="panel-header text-center">
+        <div class="pill-badge">Architecture &amp; Security</div>
+        <h2>Engine Highlights</h2>
+        <p class="subtitle">Engineered for maximum portability, high speed, and complete privacy.</p>
+      </div>
 
-        <div id="format-list" class="format-grid" role="list" aria-label="Raster Formats List"></div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>100% Client-Side Privacy</h3>
+          <p>No telemetry, no remote uploads, and zero API proxies. Image buffers are decoded and processed purely in browser memory using HTML5 <code>ArrayBuffer</code> and Canvas APIs.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h3>Modular Core Pipeline</h3>
+          <p>Every codec implements an identical functional signature mapping bytes to an <code>ImageBuffer</code> (linear 32-bit RGBA) and back, decoupling decoders from encoders cleanly.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3>Hardware Acceleration</h3>
+          <p>Native web formats leverage browser-level multi-threaded pipelines via <code>createImageBitmap</code> and <code>OffscreenCanvas</code>, transcoding heavy assets in milliseconds.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Retro &amp; Next-Gen Codecs</h3>
+          <p>Includes pure JavaScript byte-level decoders for fast next-generation formats like <strong>QOI</strong> (Quite OK Image), retro gaming standards like <strong>TGA</strong>, and Unix <strong>PPM/PNM</strong>.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+          </div>
+          <h3>WebAssembly Extension Layer</h3>
+          <p>Modular adapter bridge pre-configured to easily hook into compiled C/C++ or Rust libraries (such as LibRaw, LibJXL, and ImageMagick-WASM) for multi-layer and RAW images.</p>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-icon-wrapper" aria-hidden="true">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3>GitHub Pages Native</h3>
+          <p>Zero build tools or compilation steps needed. Deploy straight to GitHub Pages or static hosts with native ES Module imports and valid MIME handling.</p>
+        </article>
       </div>
     </section>
+
+    <!-- ==================== TAB 3: SUPPORTED FORMATS ==================== -->
+    <section id="panel-formats" class="tab-panel" role="tabpanel" aria-labelledby="tab-formats" hidden>
+      <div class="panel-header text-center">
+        <div class="pill-badge">Specification Directory</div>
+        <h2>Supported Raster Formats</h2>
+        <p class="subtitle">Explore all 50+ registered raster and bitmap graphics formats with integrated search and category filtering.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <!-- Search Input -->
+        <div class="search-field">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="search" id="search-formats" placeholder="Search by name, extension or format ID (e.g. QOI, TGA, CR2, PPM)..." aria-label="Search formats">
+        </div>
+
+        <!-- Category Filters -->
+        <div class="category-filters" role="group" aria-label="Filter formats by category">
+          <button type="button" class="filter-pill active" data-category="all">All Formats</button>
+          <button type="button" class="filter-pill" data-category="web">Web &amp; Common</button>
+          <button type="button" class="filter-pill" data-category="retro">Retro &amp; Classic</button>
+          <button type="button" class="filter-pill" data-category="raw">RAW &amp; Camera</button>
+          <button type="button" class="filter-pill" data-category="authoring">Design &amp; Layers</button>
+        </div>
+      </div>
+
+      <!-- Format Cards Grid -->
+      <div id="format-list" class="format-grid" role="list" aria-label="Raster Formats Grid"></div>
+    </section>
+
   </main>
 
-  <!-- Footer with Mosberg 2026 Copyright -->
+  <!-- Sticky Footer with 2026 Mosberg Copyright -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-container">
-      <div class="footer-left">
+      <div class="footer-brand">
         <span class="footer-logo">⚡ OmniRaster</span>
-        <p>100% in-browser, private raster graphics converter powered by open web standards.</p>
+        <p class="footer-tagline">100% in-browser, zero-dependency raster graphics converter.</p>
       </div>
       <div class="footer-links">
-        <a href="#converter">Converter</a>
-        <a href="#features">Features</a>
-        <a href="#formats">Formats Directory</a>
+        <a href="#converter" class="footer-nav-link" data-tab="tab-converter">Converter</a>
+        <a href="#features" class="footer-nav-link" data-tab="tab-features">Features</a>
+        <a href="#formats" class="footer-nav-link" data-tab="tab-formats">Formats</a>
         <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </div>
@@ -192,7 +262,7 @@
     </div>
   </footer>
 
-  <!-- Application Script (ES Module) -->
+  <!-- App Entry Script -->
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
