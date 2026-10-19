@@ -3,76 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniRaster | Universal Raster Graphics Converter</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Primary Meta Tags -->
+  <title>OmniRaster | Universal In-Browser Raster Graphics Converter</title>
+  <meta name="title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
+  <meta name="description" content="Convert any raster graphics format (PNG, JPEG, WebP, QOI, TGA, PPM, NetPBM, BMP, RAW, and more) directly in your browser. 100% private, zero server uploads, powered by modular JavaScript.">
+  <meta name="keywords" content="raster converter, image converter, qoi converter, tga converter, ppm converter, in-browser image converter, client-side, webp, png, jpeg">
+  <meta name="author" content="Mosberg">
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mosberg.github.io/raster-converter/">
+  <meta property="og:title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
+  <meta property="og:description" content="Zero-dependency client-side image converter. Convert modern, retro, and specialized raster images directly on your device.">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mosberg.github.io/raster-converter/">
+  <meta name="twitter:title" content="OmniRaster | Universal In-Browser Raster Graphics Converter">
+  <meta name="twitter:description" content="Zero-dependency client-side image converter. 100% private, offline-capable, and modular.">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <header>
-    <div class="logo">⚡ OmniRaster</div>
-    <nav>
-      <a href="#converter">Converter</a>
-      <a href="#formats">Supported Formats</a>
-    </nav>
+  <!-- Header / Navigation -->
+  <header class="site-header" role="banner">
+    <div class="nav-container">
+      <a href="#" class="brand" aria-label="OmniRaster Homepage">
+        <span class="brand-icon" aria-hidden="true">⚡</span>
+        <span class="brand-text">OmniRaster</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#converter">Converter</a>
+        <a href="#features">Features</a>
+        <a href="#formats">Supported Formats</a>
+        <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="GitHub Repository">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="converter" class="hero">
-      <h1>Universal In-Browser Raster Graphics Converter</h1>
-      <p>Convert any bitmap or raster graphic format directly in your browser with zero server uploads.</p>
+  <main id="main-content">
+    <!-- Hero / Main Converter Area -->
+    <section id="converter" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="pill-badge" role="status">🔒 100% Client-Side & Private • Zero Cloud Uploads</div>
+        <h1 id="hero-title">Universal Raster Graphics Converter</h1>
+        <p class="hero-subtitle">
+          Transform any bitmap or raster image into any other format directly inside your browser. Fast, local execution powered by ES modules, Canvas, and WebAssembly.
+        </p>
 
-      <div class="converter-box">
-        <div id="drop-zone" class="drop-zone">
-          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-          <p>Drag & drop any raster image here or <label for="file-input" class="browse-link">browse</label></p>
-          <input type="file" id="file-input" style="display: none;">
-        </div>
-
-        <div class="controls">
-          <div class="field">
-            <label for="target-format">Target Format:</label>
-            <select id="target-format"></select>
+        <!-- Converter App Card -->
+        <div class="converter-card" role="region" aria-label="Image Converter Tool">
+          <!-- Drop Zone -->
+          <div id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Drop image here or press Enter to browse files">
+            <input type="file" id="file-input" class="visually-hidden" accept="image/*, .tga, .qoi, .ppm, .pgm, .pbm, .pnm, .pcx, .bmp, .webp, .avif" aria-label="Choose image to convert">
+            <div class="drop-zone-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <p class="drop-zone-title">Drag &amp; drop your raster image here</p>
+            <p class="drop-zone-subtitle">or <span class="highlight-action">browse from your computer</span></p>
+            <p class="drop-zone-formats">Supports WebP, PNG, JPEG, QOI, TGA, NetPBM, BMP, AVIF &amp; 50+ raster formats</p>
           </div>
-          <button id="convert-btn" disabled>Convert Image</button>
-          <button id="download-btn" style="display: none;" class="btn-success">Download Converted</button>
-        </div>
 
-        <div id="status-text" class="status">Awaiting file...</div>
+          <!-- Controls Bar -->
+          <div class="converter-controls">
+            <div class="control-group">
+              <label for="target-format" class="control-label">Convert To:</label>
+              <div class="select-wrapper">
+                <select id="target-format" aria-label="Select target format"></select>
+              </div>
+            </div>
 
-        <div class="preview-wrapper">
-          <canvas id="preview-canvas"></canvas>
+            <div class="button-group">
+              <button type="button" id="convert-btn" class="btn btn-primary" disabled>
+                <span class="btn-icon" aria-hidden="true">⚡</span>
+                <span>Convert Image</span>
+              </button>
+              <button type="button" id="download-btn" class="btn btn-success" style="display: none;">
+                <span class="btn-icon" aria-hidden="true">📥</span>
+                <span>Download Result</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Status Indicator -->
+          <div id="status-text" class="status-banner" role="status" aria-live="polite">
+            <span class="status-dot"></span>
+            <span class="status-message">Awaiting image selection...</span>
+          </div>
+
+          <!-- Preview Area -->
+          <div class="preview-area" id="preview-container" aria-label="Image Preview">
+            <div class="preview-header">
+              <span class="preview-label">Live Canvas Preview</span>
+              <span id="image-dimensions" class="preview-meta"></span>
+            </div>
+            <div class="canvas-viewport">
+              <canvas id="preview-canvas" aria-label="Rendered preview of loaded image"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="formats" class="catalog-section">
-      <div class="catalog-header">
-        <h2>Supported Formats Directory</h2>
-        <input type="text" id="search-formats" placeholder="Filter formats by name or extension (e.g. QOI, DDS, NEF)...">
+    <!-- Key Features Section -->
+    <section id="features" class="features-section" aria-labelledby="features-title">
+      <div class="section-container">
+        <h2 id="features-title" class="section-title">Built for Speed, Privacy &amp; Compatibility</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🔒</div>
+            <h3>100% Client-Side Privacy</h3>
+            <p>Your photos and files never leave your device. All pixel decoding, byte processing, and encoding occurs locally in RAM.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🧩</div>
+            <h3>Modular ES Architecture</h3>
+            <p>Decoupled format engines communicating via a unified 32-bit linear RGBA <code>ImageBuffer</code> standard.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🕹️</div>
+            <h3>Modern &amp; Retro Codecs</h3>
+            <p>From modern next-gen formats like QOI and WebP to retro computing classics including TGA, NetPBM, and PCX.</p>
+          </div>
+        </div>
       </div>
-      <div id="format-list" class="format-grid"></div>
+    </section>
+
+    <!-- Searchable Format Directory -->
+    <section id="formats" class="catalog-section" aria-labelledby="catalog-title">
+      <div class="section-container">
+        <div class="catalog-header">
+          <div>
+            <h2 id="catalog-title" class="section-title">Comprehensive Raster Directory</h2>
+            <p class="section-subtitle">Search over 50+ supported and registered raster format specifications.</p>
+          </div>
+          <div class="search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="search" id="search-formats" placeholder="Filter by name, ID, or extension (e.g. QOI, TGA, RAW)..." aria-label="Filter formats">
+          </div>
+        </div>
+
+        <div id="format-list" class="format-grid" role="list" aria-label="Raster Formats List"></div>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-left">
-      <span class="footer-logo">⚡ OmniRaster</span>
-      <p>100% in-browser, private raster graphics converter.</p>
+  <!-- Footer with Mosberg 2026 Copyright -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-logo">⚡ OmniRaster</span>
+        <p>100% in-browser, private raster graphics converter powered by open web standards.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#converter">Converter</a>
+        <a href="#features">Features</a>
+        <a href="#formats">Formats Directory</a>
+        <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
     </div>
-    <div class="footer-links">
-      <a href="#converter">Converter</a>
-      <a href="#formats">Formats</a>
-      <a href="https://github.com/mosberg/raster-converter" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <a href="https://github.com/mosberg" target="_blank" rel="noopener noreferrer">Mosberg</a>. All rights reserved. Released under the MIT License.</p>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 <a href="https://github.com/mosberg" target="_blank" rel="noopener noreferrer">Mosberg</a>. All rights reserved. Released under the MIT License.</p>
-  </div>
   </footer>
-  
 
+  <!-- Application Script (ES Module) -->
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
