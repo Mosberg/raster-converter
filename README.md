@@ -105,6 +105,7 @@ OmniRaster catalog tracks and provides support across wide raster classification
 | Digital Photo & RAW | DNG, CR2, NEF, RAW, EXIF |
 | Authoring & Project Layers | PSD, PSB, KRA, XCF, ASE / ASEPRITE, CLIP, PDN |
 | Specialized & Scientific | DDS, VTF, DICOM, FITS, NITF, CALS, C4 |
+
 🌐 Deploy to GitHub Pages
  * Push this repository to GitHub under your account (mosberg/raster-converter).
  * Go to Settings → Pages.
@@ -112,6 +113,7 @@ OmniRaster catalog tracks and provides support across wide raster classification
    * Source: Deploy from a branch
    * Branch: main (or master) / Folder: / (root)
  * Click Save. Your site will be deployed at https://mosberg.github.io/raster-converter/.
+
 📄 License
 MIT License © mosberg
 
