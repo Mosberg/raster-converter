@@ -37,6 +37,7 @@ raster-converter/
         ├── netpbm.js           # Portable Anymap codec (PBM, PGM, PPM, PNM)
         ├── tga.js              # Truevision TGA codec (Uncompressed & RLE)
         └── wasm-wrappers.js    # Adapter bridge for complex & raw formats
+```
 
 🚀 Getting Started
 1. Clone the repository
@@ -52,9 +53,13 @@ python3 -m http.server 8000
 npx serve .
 
 Open http://localhost:8000 in any modern browser.
+
 🛠️ Modular Architecture & API
+
 Every format implements a simple functional interface: converting raw binary (ArrayBuffer) to an ImageBuffer, and serializing an ImageBuffer back into binary.
+
 Example: Using the Core Programmatically
+
 import { ConversionHub } from './js/core/ConversionHub.js';
 import { registerWebFormats } from './js/modules/web.js';
 import { registerQoiFormat } from './js/modules/qoi.js';
@@ -72,7 +77,9 @@ const result = await hub.convert(webpBytes, 'webp', 'qoi');
 console.log('QOI Binary Output:', result.data); // Uint8Array
 
 Adding a Custom Format Module
+
 You can register any new codec in a few lines of code:
+
 import { ImageBuffer } from './core/ImageBuffer.js';
 
 export function registerMyFormat(hub) {
